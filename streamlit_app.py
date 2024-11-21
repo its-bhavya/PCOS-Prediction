@@ -15,5 +15,10 @@ with st.sidebar:
   #Height(Cm) ,BMI,Pulse rate(bpm) ,Hb(g/dl),Cycle length(days),FSH(mIU/mL),Hip(inch),
   #Waist(inch),AMH(ng/mL),Follicle No. (L),Follicle No. (R),Avg. F size (L) (mm),Avg. F size (R) (mm),Blood Group,
   #Cycle(R/I),Pregnant(Y/N),Weight gain(Y/N),hair growth(Y/N),Skin darkening (Y/N),Hair loss(Y/N),Pimples(Y/N),
-  Fast food (Y/N),Reg.Exercise(Y/N)
+  #Fast food (Y/N),Reg.Exercise(Y/N)
   Age = st.slider("How old are you?", 14, 50, 25)
+  Weight = st.slider("How much do you weigh (In Kg)", 25, 150, 60)
+  Height = st.slider("How tall are you? (In CM)", 100, 220, 155)
+  BMI = st.text_input("Please enter your BMI.", 24.55)
+  
+  
