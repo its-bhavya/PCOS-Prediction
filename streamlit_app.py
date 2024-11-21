@@ -14,8 +14,7 @@ with st.sidebar:
   st.header("Input Features")
   #Pulse rate(bpm) ,Hb(g/dl),Cycle length(days),FSH(mIU/mL),Hip(inch),
   #Waist(inch),AMH(ng/mL),Follicle No. (L),Follicle No. (R),Avg. F size (L) (mm),Avg. F size (R) (mm)
-  #Pregnant(Y/N),hair growth(Y/N),Skin darkening (Y/N),Hair loss(Y/N),Pimples(Y/N),
-  #Fast food (Y/N),Reg.Exercise(Y/N)
+  
   Age = st.slider("How old are you?", 14, 50, 25)
   Weight = st.slider("How much do you weigh (In Kg)", 25, 150, 60)
   Height = st.slider("How tall are you? (In CM)", 100, 220, 155)
@@ -24,4 +23,11 @@ with st.sidebar:
   CycleReg = st.radio("Is your menstrual cycle regular?", ("Yes", "No"))
   WeightGain = st.radio("Have you experienced recent weight gain?", ("Yes", "No"))
   HairGrowth = st.radio("Have you noticed excessive facial or body hair growth?", ("Yes", "No"))
+  SkinDarkening = st.radio("Have you experienced recent skin darkening in areas?", ("Yes", "No"))
+  HairLoss = st.radio("Have you experienced recent Hair Loss?", ("Yes", "No"))
+  Pimples = st.radio("Have you been struggling with acne or pimples?", ("Yes", "No"))
+  FastFood = st.radio("Do you regularly consume fast food? (More than three times a week)", ("Yes", "No"))
+  RegExercise = st.radio("Do you exercise regularly?", ("Yes", "No"))
+
+  
   
