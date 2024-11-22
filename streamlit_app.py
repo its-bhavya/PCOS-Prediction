@@ -46,8 +46,8 @@ Pulse = st.number_input("Enter your pulse rate: ", min_value = 50, max_value = 1
 Haemoglobin = st.number_input("Please enter your Haemoglobin Levels (in g/dL)", min_value = 1.00, max_value = 30.00, value = 11.00, step = 1.00)
 FSH = st.number_input("Enter your FSH levels (in mIU/mL): ", value = 12.50, step =1.00)
 AMH = st.number_input("Enter your AMH levels (in ng/mL): ", value = 6.00, step =1.00)
-LeftFollicleNumbers = st.number_input("Enter your Left Follicle Number: ", value = 6, step =1.00)
-RightFollicleNumbers = st.number_input("Enter your Right Follicle Number: ", value = 6, step = 1.00)
+LeftFollicleNumbers = st.number_input("Enter your Left Follicle Number: ", value = 6, step =1)
+RightFollicleNumbers = st.number_input("Enter your Right Follicle Number: ", value = 6, step = 1)
 AvgRFollicleSize = st.number_input("Enter your average right follicle size: ", value = 15.00, step =1.00)
 AvgLFollicleSize = st.number_input("Enter your average left follicle size:", value = 15.00, step =1.00)
 
