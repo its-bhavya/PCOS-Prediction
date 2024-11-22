@@ -8,7 +8,7 @@ st.info('This app can help you predict whether or not you have PCOS.')
 df = pd.read_csv("https://raw.githubusercontent.com/its-bhavya/PCOS-Prediction/refs/heads/master/Final_PCOS_Dataset.csv")
 
 X = df.drop("PCOS", axis = 1)
-X
+
 y = df.PCOS
 #Follicle No. (L),Follicle No. (R),Avg. F size (L) (mm),Avg. F size (R) (mm)
 Age = st.slider("How old are you?", 14, 50, 25)
@@ -65,6 +65,7 @@ data = {' Age (yrs)': Age,
         'Reg.Exercise(Y/N)': RegExercise}
 
 input_df = pd.DataFrame(data, index = [0])
+input_df
 input_PCOS = pd.concat([input_df, X], axis = 0)
-
 input_PCOS
+
