@@ -92,7 +92,7 @@ input_df['Blood Group'] = input_df['Blood Group'].replace(blood_group_mapping)
 
 input_PCOS = pd.concat([input_df, X], axis = 0)
 
-model = joblib.load('decision_tree_model_1.5.2.pkl')
+model = joblib.load('decision_tree_model.pkl')
 
 if st.button('Predict'):
     prediction = model.predict(input_PCOS)  # Use the model to make a prediction
