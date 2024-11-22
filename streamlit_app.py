@@ -24,32 +24,32 @@ df = pd.read_csv("https://raw.githubusercontent.com/its-bhavya/PCOS-Prediction/r
 X = df.drop("PCOS", axis = 1)
 
 y = df.PCOS
-with st.sidebar:
-        Age = st.slider("How old are you?", 14, 50, 25)
-        Weight = st.slider("How much do you weigh (In Kg)", 25, 150, 60)
-        Height = st.slider("How tall are you? (In CM)", 100, 220, 155)
-        CycleLength = st.slider("How long does your period last on an average?", 2, 8, 5)
-        Hip = st.slider("Please enter your hip measurements (in Inches): ", 24, 56,  38)
-        Waist = st.slider("Please enter your waist measurements (in Inches): ",20, 56, 34)
-        Pregnant = st.radio("Are you currently pregnant?", ("Yes", "No"))
-        CycleReg = st.radio("Is your menstrual cycle regular?", ("Yes", "No"))
-        WeightGain = st.radio("Have you experienced recent weight gain?", ("Yes", "No"))
-        HairGrowth = st.radio("Have you noticed excessive facial or body hair growth?", ("Yes", "No"))
-        SkinDarkening = st.radio("Have you experienced recent skin darkening in areas?", ("Yes", "No"))
-        HairLoss = st.radio("Have you experienced recent Hair Loss?", ("Yes", "No"))
-        Pimples = st.radio("Have you been struggling with acne or pimples?", ("Yes", "No"))
-        FastFood = st.radio("Do you regularly consume fast food? (More than three times a week)", ("Yes", "No"))
-        RegExercise = st.radio("Do you exercise regularly?", ("Yes", "No"))
-        BloodGroup = st.selectbox("What's your blood group?", ("A+","B+","AB+", "O+", "O-", "A-", "B-", "AB-"))
-        BMI = st.number_input("Please enter your BMI.", value = 24.55)
-        Pulse = st.number_input("Enter your pulse rate: ", min_value = 50, max_value = 100, value = 72, placeholder = "Enter here...")
-        Haemoglobin = st.number_input("Please enter your Haemoglobin Levels (in g/dL)", min_value = 1.00, max_value = 30.00, value = 11.00)
-        FSH = st.number_input("Enter your FSH levels (in mIU/mL): ", value = 12.50)
-        AMH = st.number_input("Enter your AMH levels (in ng/mL): ", value = 6.00)
-        LeftFollicleNumbers = st.number_input("Enter your Left Follicle Number: ", value = 6)
-        RightFollicleNumbers = st.number_input("Enter your Right Follicle Number: ", value = 6)
-        AvgRFollicleSize = st.number_input("Enter your average right follicle size: ", value = 15.00)
-        AvgLFollicleSize = st.number_input("Enter your average left follicle size:", value = 15.00)
+
+Age = st.slider("How old are you?", 14, 50, 25)
+Weight = st.slider("How much do you weigh (In Kg)", 25, 150, 60)
+Height = st.slider("How tall are you? (In CM)", 100, 220, 155)
+CycleLength = st.slider("How long does your period last on an average?", 2, 8, 5)
+Hip = st.slider("Please enter your hip measurements (in Inches): ", 24, 56,  38)
+Waist = st.slider("Please enter your waist measurements (in Inches): ",20, 56, 34)
+Pregnant = st.radio("Are you currently pregnant?", ("Yes", "No"))
+CycleReg = st.radio("Is your menstrual cycle regular?", ("Yes", "No"))
+WeightGain = st.radio("Have you experienced recent weight gain?", ("Yes", "No"))
+HairGrowth = st.radio("Have you noticed excessive facial or body hair growth?", ("Yes", "No"))
+SkinDarkening = st.radio("Have you experienced recent skin darkening in areas?", ("Yes", "No"))
+HairLoss = st.radio("Have you experienced recent Hair Loss?", ("Yes", "No"))
+Pimples = st.radio("Have you been struggling with acne or pimples?", ("Yes", "No"))
+FastFood = st.radio("Do you regularly consume fast food? (More than three times a week)", ("Yes", "No"))
+RegExercise = st.radio("Do you exercise regularly?", ("Yes", "No"))
+BloodGroup = st.selectbox("What's your blood group?", ("A+","B+","AB+", "O+", "O-", "A-", "B-", "AB-"))
+BMI = st.number_input("Please enter your BMI.", value = 24.55)
+Pulse = st.number_input("Enter your pulse rate: ", min_value = 50, max_value = 100, value = 72, placeholder = "Enter here...")
+Haemoglobin = st.number_input("Please enter your Haemoglobin Levels (in g/dL)", min_value = 1.00, max_value = 30.00, value = 11.00)
+FSH = st.number_input("Enter your FSH levels (in mIU/mL): ", value = 12.50)
+AMH = st.number_input("Enter your AMH levels (in ng/mL): ", value = 6.00)
+LeftFollicleNumbers = st.number_input("Enter your Left Follicle Number: ", value = 6)
+RightFollicleNumbers = st.number_input("Enter your Right Follicle Number: ", value = 6)
+AvgRFollicleSize = st.number_input("Enter your average right follicle size: ", value = 15.00)
+AvgLFollicleSize = st.number_input("Enter your average left follicle size:", value = 15.00)
 
 #Creating a dataframe for the input features
 data = {' Age (yrs)': Age,
@@ -151,5 +151,5 @@ best_model = grid_search.best_estimator_
 
 if st.button('Predict'):
     prediction = best_model.predict(input_df)  # Use the model to make a prediction
-    st.write(f'Predicted PCOS: {"Yes" if prediction[0] == 1 else "No"}')
+    st.write(f'Predicted PCOS: {"You might have PCOS, kindly consult a doctor." if prediction[0] == 1 else "No, you don't have PCOS. But always consult a doctor for proper diagnosis."}')
 
