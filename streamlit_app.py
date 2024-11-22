@@ -8,6 +8,7 @@ st.info('This app can help you predict whether or not you have PCOS.')
 df = pd.read_csv("https://raw.githubusercontent.com/its-bhavya/PCOS-Prediction/refs/heads/master/Final_PCOS_Dataset.csv")
 
 X = df.drop("PCOS", axis = 1)
+X
 y = df.PCOS
 #Follicle No. (L),Follicle No. (R),Avg. F size (L) (mm),Avg. F size (R) (mm)
 Age = st.slider("How old are you?", 14, 50, 25)
@@ -16,6 +17,7 @@ Height = st.slider("How tall are you? (In CM)", 100, 220, 155)
 CycleLength = st.slider("How long does your period last on an average?", 2, 8, 5)
 Hip = st.slider("Please enter your hip measurements (in Inches): ", 24, 56,  38)
 Waist = st.slider("Please enter your waist measurements (in Inches): ",20, 56, 34)
+Pregnant = st.radio("Are you currently pregnant?", ("Yes", "No"))
 CycleReg = st.radio("Is your menstrual cycle regular?", ("Yes", "No"))
 WeightGain = st.radio("Have you experienced recent weight gain?", ("Yes", "No"))
 HairGrowth = st.radio("Have you noticed excessive facial or body hair growth?", ("Yes", "No"))
@@ -35,5 +37,34 @@ RightFollicleNumbers = st.number_input("Enter your Right Follicle Number: ", val
 AvgRFollicleSize = st.number_input("Enter your average right follicle size: ", value = 15.00)
 AvgLFollicleSize = st.number_input("Enter your average left follicle size:", value = 15.00)
 
-  
-  
+#Creating a dataframe for the input features
+data = {' Age (yrs)': Age,
+        'Weight (Kg)': Weight,
+        'Height(Cm) ': Height,
+        'BMI': BMI,
+        'Pulse rate(bpm) ': Pulse,
+        'Hb(g/dl)': Haemoglobin,
+        'Cycle length(days)': CycleLength,
+        'FSH(mIU/mL)': FSH,
+        'Hip(inch)': Hip,
+        'Waist(inch)': Waist,
+        'AMH(ng/mL)': AMH,
+        'Follicle No. (L)': LeftFollicleNumbers,
+        'Follicle No. (R)':RightFollicleNumbers,
+        'Avg. F size (L) (mm)': AvgLFollicleSize,
+        'Avg. F size (R) (mm)': AvgRFollicleSize,
+        'Blood Group': BloodGroup,
+        'Cycle(R/I)': CycleReg,
+        'Pregnant(Y/N)': Pregnant,
+        'Weight gain(Y/N)': WeightGain,
+        'hair growth(Y/N)',: HairGrowth,
+        'Skin darkening (Y/N)': SkinDarkening,
+        'Hair loss(Y/N)': HairLoss,
+        'Pimples(Y/N)': Pimples,
+        'Fast food (Y/N)': FastFood,
+        'Reg.Exercise(Y/N)': RegExercise}
+
+input_df = pd.DataFrame(data, index = [0])
+input_PCOS = pd.concat([input_df, X], axis = 0)
+
+input_PCOS
