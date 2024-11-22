@@ -65,9 +65,7 @@ data = {' Age (yrs)': Age,
         'Reg.Exercise(Y/N)': RegExercise}
 
 input_df = pd.DataFrame(data, index = [0])
-input_df
-input_PCOS = pd.concat([input_df, X], axis = 0)
-input_PCOS
+
 
 #Encoding our input features
 encode = ['Cycle(R/I)', 'Pregnant(Y/N)', 'Weight gain(Y/N)', 'hair growth(Y/N)',  'Skin darkening (Y/N)',
@@ -75,7 +73,6 @@ encode = ['Cycle(R/I)', 'Pregnant(Y/N)', 'Weight gain(Y/N)', 'hair growth(Y/N)',
 
 binary_mapping = {"Yes": 1, "No": 0}
 
-# Encoding the specified columns
 for col in encode:
     input_df[col] = input_df[col].replace(binary_mapping)
 
@@ -91,4 +88,12 @@ blood_group_mapping = {
 }
 
 input_df['Blood Group'] = input_df['Blood Group'].replace(blood_group_mapping)
-input_df
+
+input_PCOS = pd.concat([input_df, X], axis = 0)
+
+model = joblib.load('decision_tree_model.pkl')
+
+if st.button('Predict'):
+    prediction = model.predict(input_PCOS)  # Use the model to make a prediction
+    st.write(f'Predicted PCOS: {"Yes" if prediction[0] == 1 else "No"}')
+
