@@ -1,6 +1,20 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from sklearn.model_selection import train_test_split, cross_val_score
+from sklearn.preprocessing import StandardScaler
+from sklearn.feature_selection import SelectKBest, chi2
+from sklearn.metrics import accuracy_score, classification_report
+from sklearn.linear_model import LogisticRegression
+from sklearn. tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
+from sklearn.neighbors import KNeighborsClassifier
+
 
 st.title('Hormoniq')
 
@@ -92,9 +106,53 @@ input_df['Blood Group'] = input_df['Blood Group'].replace(blood_group_mapping)
 
 input_PCOS = pd.concat([input_df, X], axis = 0)
 
-model = joblib.load('decision_tree_model.pkl')
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
+
+classifiers = {
+    'Logistic Regression' : LogisticRegression(max_iter = 7000),
+    'Decision Tree': DecisionTreeClassifier(),
+    'Random Forest': RandomForestClassifier(max_depth=5),
+    'Support Vector Machine': SVC(),
+    'Naive Bayes': GaussianNB(),
+    'K-Nearest Neighbours': KNeighborsClassifier()
+}
+
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+results = {}
+
+for name, clf in classifiers.items():
+    X_train = np.array(X_train)
+    clf.fit(X_train, y_train)
+    X_test = np.array(X_test)
+    y_pred = clf.predict(X_test)
+    cm = confusion_matrix(y_test, y_pred)
+    accuracy = accuracy_score(y_test, y_pred)
+    results[name]  = accuracy
+
+#Finding the best classifier
+best_classifier = max(results, key = results.get)
+
+"""#### Optimisng Decision Tree"""
+
+param_grid = {
+    'max_depth':[None, 3, 4, 5, 6, 7],
+    'min_samples_split' : [2, 5, 7],
+    'min_samples_leaf' : [1, 2, 4],
+    'criterion' : ['gini', 'entropy']
+
+}
+
+dt = DecisionTreeClassifier(random_state = 42)
+grid_search = GridSearchCV(dt, param_grid, scoring = 'accuracy', cv = 5, verbose = 1)
+
+grid_search.fit(X_train, y_train)
+
+best_params = grid_search.best_params_
+best_score = grid_search.best_score_
+best_model = grid_search.best_estimator_
+
 
 if st.button('Predict'):
-    prediction = model.predict(input_PCOS)  # Use the model to make a prediction
+    prediction = best_model.predict(input_df)  # Use the model to make a prediction
     st.write(f'Predicted PCOS: {"Yes" if prediction[0] == 1 else "No"}')
 
