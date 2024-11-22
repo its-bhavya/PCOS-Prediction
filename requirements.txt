@@ -1,3 +1,4 @@
+python 3.11.4
 distutils
 streamlit>=1.26.0
 numpy==1.19.0
