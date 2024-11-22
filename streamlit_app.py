@@ -10,7 +10,7 @@ df = pd.read_csv("https://raw.githubusercontent.com/its-bhavya/PCOS-Prediction/r
 X = df.drop("PCOS", axis = 1)
 
 y = df.PCOS
-with st.sidebar():
+with st.sidebar:
         Age = st.slider("How old are you?", 14, 50, 25)
         Weight = st.slider("How much do you weigh (In Kg)", 25, 150, 60)
         Height = st.slider("How tall are you? (In CM)", 100, 220, 155)
