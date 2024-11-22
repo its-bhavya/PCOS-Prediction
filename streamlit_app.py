@@ -41,7 +41,7 @@ Pimples = st.radio("Have you been struggling with acne or pimples?", ("Yes", "No
 FastFood = st.radio("Do you regularly consume fast food? (More than three times a week)", ("Yes", "No"))
 RegExercise = st.radio("Do you exercise regularly?", ("Yes", "No"))
 BloodGroup = st.selectbox("What's your blood group?", ("A+","B+","AB+", "O+", "O-", "A-", "B-", "AB-"))
-BMI = st.number_input("Please enter your BMI.", value = 24.55, step = 1)
+BMI = st.number_input("Please enter your BMI.", value = 24.55, step = 1.00)
 Pulse = st.number_input("Enter your pulse rate: ", min_value = 50, max_value = 100, value = 72, step =1)
 Haemoglobin = st.number_input("Please enter your Haemoglobin Levels (in g/dL)", min_value = 1.00, max_value = 30.00, value = 11.00, step = 1.00)
 FSH = st.number_input("Enter your FSH levels (in mIU/mL): ", value = 12.50, step =1.00)
