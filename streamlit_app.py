@@ -107,22 +107,9 @@ input_PCOS = pd.concat([input_df, X], axis = 0)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=0)
 
-param_grid = {
-    'max_depth':[None, 3, 4, 5, 6, 7],
-    'min_samples_split' : [2, 5, 7],
-    'min_samples_leaf' : [1, 2, 4],
-    'criterion' : ['gini', 'entropy']
-}
-
-dt = DecisionTreeClassifier(random_state = 42)
-grid_search = GridSearchCV(dt, param_grid, scoring = 'accuracy', cv = 5, verbose = 1)
-
-grid_search.fit(X_train, y_train)
-
-best_model = grid_search.best_estimator_
-
+model = joblib.load("decision_tree_model.pkl")
 
 if st.button('Predict'):
-    prediction = best_model.predict(input_df)  # Use the model to make a prediction
+    prediction = model.predict(input_df)  # Use the model to make a prediction
     st.write(f'Predicted PCOS: {"You might have PCOS, kindly consult a doctor." if prediction[0] == 1 else "No, you don't have PCOS. But always consult a doctor for proper diagnosis."}')
 
