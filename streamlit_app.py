@@ -91,3 +91,4 @@ blood_group_mapping = {
 }
 
 input_df['Blood Group'] = input_df['Blood Group'].replace(blood_group_mapping)
+input_df
