@@ -15,9 +15,9 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import GridSearchCV
 
 
-st.title('Hormoniq')
+st.title('PCOS Prediction 🌷')
 
-st.info('This app can help you predict whether or not you have PCOS.')
+st.info('This app can help you predict whether or not you may have PCOS.')
 
 df = pd.read_csv("https://raw.githubusercontent.com/its-bhavya/PCOS-Prediction/refs/heads/master/Final_PCOS_Dataset.csv")
 
