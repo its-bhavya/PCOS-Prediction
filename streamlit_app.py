@@ -15,7 +15,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.model_selection import GridSearchCV
 
 
-st.title('PCOS Prediction 🌷')
+st.title('Ask PCOS 🌷')
 
 st.info('This app can help you predict whether or not you may have PCOS.')
 
