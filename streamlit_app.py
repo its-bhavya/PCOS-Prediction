@@ -17,7 +17,7 @@ from sklearn.model_selection import GridSearchCV
 
 st.title('Ask PCOS 🌷')
 
-st.info('This app can help you predict whether or not you may have PCOS.')
+st.info('This app can help you predict whether or not you may PCOS.')
 
 df = pd.read_csv("https://raw.githubusercontent.com/its-bhavya/PCOS-Prediction/refs/heads/master/Final_PCOS_Dataset.csv")
 
