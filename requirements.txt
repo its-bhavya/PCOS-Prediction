@@ -1,5 +1,6 @@
+distutils
 streamlit>=1.26.0
 numpy==1.19.0
 pandas
 scikit-learn==1.3.0
-distutils
+
