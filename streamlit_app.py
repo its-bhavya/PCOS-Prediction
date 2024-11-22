@@ -111,5 +111,5 @@ model = joblib.load("decision_tree_model.pkl")
 
 if st.button('Predict'):
     prediction = model.predict(input_df)  # Use the model to make a prediction
-    st.write(f'Predicted PCOS: {"You might have PCOS, kindly consult a doctor." if prediction[0] == 1 else "No, you don't have PCOS. But always consult a doctor for proper diagnosis."}')
+    st.write(f'{"You might have PCOS, kindly consult a doctor." if prediction[0] == 1 else "No, you don't have PCOS. But always consult a doctor for proper diagnosis."}')
 
