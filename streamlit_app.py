@@ -80,14 +80,14 @@ for col in encode:
     input_df[col] = input_df[col].replace(binary_mapping)
 
 blood_group_mapping = {
-    11: 'A+',
-    12: 'A-',
-    13: 'B+',
-    14: 'B-',
-    15: 'O+',
-    16: 'O-',
-    17: 'AB+',
-    18: 'AB-'
+    'A+':11,
+    'A-':12,
+    'B+':13,
+    'B-':14,
+    'O+':15,
+    'O-':16,
+    'AB+':17,
+    'AB-':18
 }
 
 input_df['Blood Group'] = input_df['Blood Group'].replace(blood_group_mapping)
