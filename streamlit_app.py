@@ -131,8 +131,6 @@ for name, clf in classifiers.items():
 #Finding the best classifier
 best_classifier = max(results, key = results.get)
 
-"""#### Optimisng Decision Tree"""
-
 param_grid = {
     'max_depth':[None, 3, 4, 5, 6, 7],
     'min_samples_split' : [2, 5, 7],
