@@ -23,7 +23,7 @@ HairLoss = st.radio("Have you experienced recent Hair Loss?", ("Yes", "No"))
 Pimples = st.radio("Have you been struggling with acne or pimples?", ("Yes", "No"))
 FastFood = st.radio("Do you regularly consume fast food? (More than three times a week)", ("Yes", "No"))
 RegExercise = st.radio("Do you exercise regularly?", ("Yes", "No"))
-Pulse = st.number_input("Enter your pulse rate: ", 50, 100, 72)
+Pulse = st.number_input("Enter your pulse rate: ", min_value = 50, max_value = 100, value = 72, placeholder = "Enter here...")
 Haemoglobin = st.number_input("Please enter your Haemoglobin Levels (in g/dL)", 1, 30, 11)
 CycleLength = st.slider("How long does your period last on an average?", 2, 8, 5)
 Hip = st.slider("Please enter your hip measurements (in Inches): ", 24, 56,  38)
@@ -34,7 +34,6 @@ LeftFollicleNumbers = st.number_input("Enter your Left Follicle Number: ", 6)
 RightFollicleNumbers = st.number_input("Enter your Right Follicle Number: ", 6)
 AvgRFollicleSize = st.number_input("Enter your average right follicle size: ", 15)
 AvgLFollicleSize = st.number_input("Enter your average left follicle size:", 15)
-
 
   
   
