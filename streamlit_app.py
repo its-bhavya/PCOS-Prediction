@@ -69,3 +69,25 @@ input_df
 input_PCOS = pd.concat([input_df, X], axis = 0)
 input_PCOS
 
+#Encoding our input features
+encode = ['Cycle(R/I)', 'Pregnant(Y/N)', 'Weight gain(Y/N)', 'hair growth(Y/N)',  'Skin darkening (Y/N)',
+          'Hair loss(Y/N)', 'Pimples(Y/N)','Fast food (Y/N)', 'Reg.Exercise(Y/N)']
+
+binary_mapping = {"Yes": 1, "No": 0}
+
+# Encoding the specified columns
+for col in encode:
+    input_df[col] = input_df[col].replace(binary_mapping)
+
+blood_group_mapping = {
+    11: 'A+',
+    12: 'A-',
+    13: 'B+',
+    14: 'B-',
+    15: 'O+',
+    16: 'O-',
+    17: 'AB+',
+    18: 'AB-'
+}
+
+input_df['Blood Group'] = input_df['Blood Group'].replace(blood_group_mapping)
